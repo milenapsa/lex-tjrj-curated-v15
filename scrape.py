@@ -16,7 +16,7 @@ def cancelled():
  return {int(x) for x in re.findall(r"(?i)S[ÚU]MULA\s+(?:TJ\s*)?(?:N[º°.]?\s*)?(\d{1,4})",pdftext(CANCELADAS))}
 STOP={"de","da","do","das","dos","e","a","o","em","para","por","com","um","uma","no","na","nos","nas","lei","art"}
 def toks(q):return [x for x in re.findall(r"[a-z0-9áéíóúâêôãõç]+",q.lower()) if len(x)>2 and x not in STOP]
-HEAD=re.compile(r"(?im)^\s*N[º°.]?\s*(\d{1,4})\s*:\s*")
+HEAD=re.compile(r"(?im)^\s*N\s*[º°]?\s*\.?\s*(\d{1,4})\s*:\s*")
 def search(q,limit):
  t=pdftext(SUMULAS);c=cancelled();m=list(HEAD.finditer(t));rows=[];qt=toks(q);excluded=0
  for i,x in enumerate(m):
